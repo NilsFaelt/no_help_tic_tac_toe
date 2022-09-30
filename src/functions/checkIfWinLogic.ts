@@ -19,7 +19,7 @@ export function checkIfWin(arrayOfWhite:number[],arrayOfBlack:number[], setCirce
    if(whitearray1.length === 3 || whitearray2.length === 3 || whitearray3.length === 3|| whitearray4.length === 3 || whitearray5.length === 3 || whitearray6.length === 3 || whitearray7.length === 3 || whitearray8.length === 3){
        setCirclePoints((prev)=>prev +  1)
        setCircelWin(!circelWin)
-       console.log('win O')
+   
      whitearray1 = []
      whitearray2 = []
      whitearray3 = []
@@ -48,8 +48,7 @@ export function checkIfWin(arrayOfWhite:number[],arrayOfBlack:number[], setCirce
    if(blackarray1.length === 3 || blackarray2.length === 3 || blackarray3.length === 3|| blackarray4.length === 3 || blackarray5.length === 3 || blackarray6.length === 3 || blackarray7.length === 3 || blackarray8.length === 3){
        setXPoints((prev)=>prev +  1)
        setXWin(!xWin)
-       
-       console.log('win X')
+ 
         blackarray1 = []
         blackarray2 = []
         blackarray3 = []
@@ -63,6 +62,7 @@ export function checkIfWin(arrayOfWhite:number[],arrayOfBlack:number[], setCirce
      
      
    }
+   
    else return
    
    }

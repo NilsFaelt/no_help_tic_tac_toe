@@ -6,7 +6,7 @@ const StatsAndBoardComp = () => {
   const [playerIsCircle, setpPlayerIsCircle] = useState(true);
   const [circlePoints, setCirclePoints] = useState(0);
   const [xPoints, setXPoints] = useState(0);
-  console.log(playerIsCircle);
+
   return (
     <Styles.Container>
       <Styles.Title>Tic Tac Toe</Styles.Title>

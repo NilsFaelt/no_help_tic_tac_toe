@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-
 import { checkIfWin } from "../../../functions/checkIfWinLogic";
 import { fillTheArray } from "../../../functions/fillTheArray";
+import { resetIfTie } from "../../../functions/resetIfTie";
 import { Square } from "../../../types/types";
 import * as Styles from "./board.styles";
 interface Props {
@@ -29,16 +29,13 @@ const Board: React.FC<Props> = ({
     backGround: "teal",
   };
 
-  console.log(xIndexes);
   const arrayOfSquares = new Array(9).fill(square);
 
   const handleClick = (square: Square) => {
-    console.log(square);
     if (square.circle === null && playerIsCircle === true) {
       setplayingState((prev: any) =>
         prev?.map((item: any) => {
           if (square.squareIndex === item.squareIndex) {
-            console.log("inside o", item);
             setCircleIndexes([...circleIndexes, square.squareIndex]);
             return { ...item, circle: true, backGround: "black" };
           }
@@ -51,7 +48,6 @@ const Board: React.FC<Props> = ({
       setplayingState((prev: any) =>
         prev?.map((item: any) => {
           if (square.squareIndex === item.squareIndex) {
-            console.log("inside x", item);
             setXIndexes([...xIndexes, square.squareIndex]);
             return { ...item, circle: false, backGround: "black" };
           }
@@ -73,7 +69,15 @@ const Board: React.FC<Props> = ({
       setCirclePoints,
       setXPoints
     );
-    console.log("o");
+    let check = resetIfTie(
+      circleIndexes,
+      setCircleIndexes,
+      xIndexes,
+      setXIndexes
+    );
+    if (check) {
+      setplayingState(fillTheArray(arrayOfSquares));
+    }
   }, [playingState]);
 
   useEffect(() => {
@@ -82,11 +86,11 @@ const Board: React.FC<Props> = ({
     setXIndexes([]);
   }, [xWin, circelWin]);
 
-  console.log(playingState);
   return (
     <Styles.Board>
       {playingState?.map((square) => (
         <Styles.Square
+          key={square.squareIndex}
           onClick={() => handleClick(square)}
           color={`${square.backGround}`}
         >
