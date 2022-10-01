@@ -1,8 +1,4 @@
-
-
-
 export function checkIfWin(arrayOfWhite:number[],arrayOfBlack:number[], setCircelWin:React.Dispatch<React.SetStateAction<boolean>>, circelWin:boolean, setXWin:React.Dispatch<React.SetStateAction<boolean>>,xWin:boolean,setCirclePoints: React.Dispatch<React.SetStateAction<number>>,  setXPoints: React.Dispatch<React.SetStateAction<number>> ){
-
 
     let whitearray1 = arrayOfWhite.filter((i)=> i ===1 || i === 2|| i === 3 )
     let whitearray2 = arrayOfWhite.filter((i)=> i ===4 || i === 5|| i ===6 )
