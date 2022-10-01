@@ -29,9 +29,10 @@ export const Square = styled.div`
         background-color:${props=>props.color};
     }
     :active{
+        transition:1s;
         box-shadow:10px 10px 10px white;
         background-color:purple;
-        transform:scale(2.5) rotate(360deg);
+        transform:scale(3) ;
         border-radius:50%;
         border:1px solid purple;
     }

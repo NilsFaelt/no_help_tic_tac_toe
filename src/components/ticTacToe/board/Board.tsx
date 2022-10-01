@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { checkIfWin } from "../../../functions/checkIfWinLogic";
 import { fillTheArray } from "../../../functions/fillTheArray";
+import { handleClickLoqgic } from "../../../functions/handleClickLogic";
 import { resetIfTie } from "../../../functions/resetIfTie";
 import { Square } from "../../../types/types";
 import * as Styles from "./board.styles";
@@ -28,34 +29,20 @@ const Board: React.FC<Props> = ({
     squareIndex: 0,
     backGround: "teal",
   };
-
+  console.log(xIndexes);
   const arrayOfSquares = new Array(9).fill(square);
 
   const handleClick = (square: Square) => {
-    if (square.circle === null && playerIsCircle === true) {
-      setplayingState((prev: any) =>
-        prev?.map((item: any) => {
-          if (square.squareIndex === item.squareIndex) {
-            setCircleIndexes([...circleIndexes, square.squareIndex]);
-            return { ...item, circle: true, backGround: "black" };
-          }
-          return item;
-        })
-      );
-      setpPlayerIsCircle(!playerIsCircle);
-    }
-    if (square.circle === null && playerIsCircle === false) {
-      setplayingState((prev: any) =>
-        prev?.map((item: any) => {
-          if (square.squareIndex === item.squareIndex) {
-            setXIndexes([...xIndexes, square.squareIndex]);
-            return { ...item, circle: false, backGround: "black" };
-          }
-          return item;
-        })
-      );
-      setpPlayerIsCircle(!playerIsCircle);
-    }
+    handleClickLoqgic(
+      square,
+      playerIsCircle,
+      setplayingState,
+      setCircleIndexes,
+      circleIndexes,
+      setpPlayerIsCircle,
+      setXIndexes,
+      xIndexes
+    );
   };
 
   useEffect(() => {
